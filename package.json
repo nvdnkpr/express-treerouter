@@ -11,6 +11,10 @@
 		"email": "tomas.bara@whoami.cz",
 		"url": "http://whoami.cz/"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/whoamicz/express-mapRouter"
+	},
 	"dependencies": {
 		"express": "3.1.x",
 		"underscore": "1.4.x"
@@ -18,5 +22,6 @@
 	"engines": {
 		"node": "*",
 		"npm": "*"
-	}
+	},
+	"main": "index.js",
 }
