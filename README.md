@@ -11,13 +11,13 @@ Easy way for using tree routes in Express.js
 ### Create this
 
 	app.use(treeRouter({
-		'**products**': { get: controller, post: controller, content: {
-			'**:product_id**': { get: controller, put: controller, del: controller, content: {
-				'**tags**': { get: controller, post: controller, content: { 
-					'**:tag_id**': { get: controller, put: controller, del: controller }
+		'products': { get: controller, post: controller, content: {
+			':product_id': { get: controller, put: controller, del: controller, content: {
+				'tags': { get: controller, post: controller, content: { 
+					':tag_id': { get: controller, put: controller, del: controller }
 				}},
-				'**comments**': { get: controller, post: controller, content: {
-					'**:comment_id**': { get: controller, put: controller, del: controller }
+				'comments': { get: controller, post: controller, content: {
+					':comment_id': { get: controller, put: controller, del: controller }
 				}}
 			}}
 		}}
