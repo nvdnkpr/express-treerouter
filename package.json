@@ -1,0 +1,22 @@
+{
+	"name": "express-mapRouter",
+	"version": "0.1.0",
+	"description": "Easy creation of routes in map format for Express..",
+	"keywords": [
+		"mapRouter",
+		"express"
+	],
+	"author": {
+		"name": "Tomáš Bára",
+		"email": "tomas.bara@whoami.cz",
+		"url": "http://whoami.cz/"
+	},
+	"dependencies": {
+		"express": "3.1.x",
+		"underscore": "1.4.x"
+	},
+	"engines": {
+		"node": "*",
+		"npm": "*"
+	}
+}
