@@ -1,6 +1,6 @@
 {
 	"name": "express-treerouter",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Easy way for using tree routes in Express.js",
 	"keywords": [
 		"treeRouter",
