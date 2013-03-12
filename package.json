@@ -1,6 +1,6 @@
 {
 	"name": "express-maprouter",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Easy creation of routes in map format for Express..",
 	"keywords": [
 		"mapRouter",
