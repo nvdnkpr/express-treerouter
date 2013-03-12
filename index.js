@@ -9,10 +9,12 @@ var mapRouter = function(routes){
 		put: 'put',
 		del: 'del'
 	};
+	/*
 	if (typeof(routes) !== 'object') {
 		// Space for error
 		return app;
 	}
+	*/
 	this.parse(routes);
 	return this.app;
 };

@@ -4,7 +4,7 @@ Easy way for using tree routes in Express.js
 
 ## Installation
 
-	$ npm install express-maprouter
+	$ npm install express-treerouter
 
 ## Sample
 
