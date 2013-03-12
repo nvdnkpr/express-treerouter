@@ -23,5 +23,5 @@
 		"node": "*",
 		"npm": "*"
 	},
-	"main": "index.js",
+	"main": "index.js"
 }
