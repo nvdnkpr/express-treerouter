@@ -3,7 +3,8 @@
 	"version": "0.1.2",
 	"description": "Easy way for using tree routes in Express.js",
 	"keywords": [
-		"mapRouter",
+		"treeRouter",
+		"router",
 		"express"
 	],
 	"author": {
