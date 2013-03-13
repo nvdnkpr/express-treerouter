@@ -4,10 +4,12 @@ var express = require('express'),
 var mapRouter = function(routes){
 	this.app = express();
 	this.methods = {
+		all: 'all',
 		get: 'get',
 		post: 'post',
 		put: 'put',
-		del: 'del'
+		del: 'del',
+		delete: 'del'
 	};
 	/*
 	if (typeof(routes) !== 'object') {
