@@ -11,6 +11,7 @@ Easy way for using tree routes in Express.js
 ### Create this
 
 	app.use(treeRouter({
+		'' : { get: controller },
 		'products': { get: controller, post: controller, content: {
 			':product_id': { get: controller, put: controller, del: controller, content: {
 				'tags': { get: controller, post: controller, content: { 
@@ -23,11 +24,14 @@ Easy way for using tree routes in Express.js
 					':owner_id': { get: controller, put: controller, del: controller }
 				}}
 			}}
-		}}
+		}},
+		'*' : { all: error404Controller }
 	}));
 
 ### From this
 
+	app.get('/', controller);
+	
 	app.get('/products', controller);
 	app.post('/products', controller);
 	app.get('/products/:product_id', controller);
@@ -51,4 +55,6 @@ Easy way for using tree routes in Express.js
 	app.get('/products/:product_id/owners/:owner_id', controller);
 	app.put('/products/:product_id/owners/:owner_id', controller);
 	app.del('/products/:product_id/owners/:owner_id', controller);
+	
+	app.all('*', error404Controller);
 
