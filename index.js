@@ -1,7 +1,6 @@
-var express = require('express'),
-	_ = require('underscore');
+var _ = require('underscore');
 
-var mapRouter = function(routes){
+var mapRouter = function(express, routes){
 	this.app = express();
 	this.methods = {
 		all: 'all',
@@ -11,29 +10,23 @@ var mapRouter = function(routes){
 		del: 'del',
 		delete: 'del'
 	};
-	/*
-	if (typeof(routes) !== 'object') {
-		// Space for error
-		return app;
-	}
-	*/
 	this.parse(routes);
 	return this.app;
 };
 
 mapRouter.prototype.parse = function(routes, originPath){
-	var obj = this;
+	var self = this;
 	_.each(routes, function(route, path){
 		var targetPath = (originPath || '')+'/'+path;
-		_.each(obj.methods, function(method, methodKey){
-			if ( typeof(route[(methodKey)]) !== 'undefined' ) { // === function, object..?
-				obj.app[(method)](targetPath, route[(methodKey)]);
+		_.each(self.methods, function(method, methodKey){
+			if ( typeof(route[(methodKey)]) !== 'undefined' ) {
+				self.app[(method)](targetPath, route[(methodKey)]);
 			}
 		});
-		if ( typeof(route.content) === 'object' ) obj.parse(route.content, targetPath);
+		if ( typeof(route.content) === 'object' ) self.parse(route.content, targetPath);
 	});
 };
 
-module.exports = function(routes){
-	return new mapRouter(routes);
+module.exports = function(express, routes){
+	return new mapRouter(express, routes);
 };
