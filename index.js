@@ -27,6 +27,8 @@ mapRouter.prototype.parse = function(routes, originPath){
 	});
 };
 
-module.exports = function(express, routes){
-	return new mapRouter(express, routes);
+module.exports = function( express ){
+	return function ( routes ) {
+		return new mapRouter(express, routes);
+	}
 };

@@ -1,44 +1,36 @@
 var express = require('express'),
-	mapRouter = require('../index.js'),
+	treeRouter = require('../index.js')(express),
 	app = express();
 
-var sampleController = function(req, res){
+var controller = function(req, res){
 	res.send(req.method+' '+req.url);
 };
+var error404Controller = function(req, res){
+	res.status(404);
+	res.send('404: '+req.method+' '+req.url);
+};
 
-var map = {
-	'products': {
-		get: sampleController,
-		post: sampleController,
-		content: {
-			':product_id': {
-				get: sampleController,
-				put: sampleController,
-				del: sampleController,
-				content: {
-					'tags': {
-						get: sampleController,
-					},
-					'comments': {
-						get: sampleController,
-						post: sampleController,
-						content: {
-							':comment_id': {
-								get: sampleController,
-								put: sampleController,
-								del: sampleController
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+var tree = {
+	'' : { get: controller },
+	'products': { get: controller, post: controller, content: {
+		':product_id': { get: controller, put: controller, del: controller, content: {
+			'tags': { get: controller, post: controller, content: {
+				':tag_id': { get: controller, put: controller, del: controller }
+			}},
+			'comments': { get: controller, post: controller, content: {
+				':comment_id': { get: controller, put: controller, del: controller }
+			}},
+			'owners': { get: controller, post: controller, content: {
+				':owner_id': { get: controller, put: controller, del: controller }
+			}}
+		}}
+	}},
+	'*' : { all: error404Controller }
 };
 
 app.configure(function(){
-	app.set('title', 'SimpleSample');
-	app.use(mapRouter(map));
+	app.set('title', 'Simple');
+	app.use(treeRouter(tree));
 });
 
 app.listen(8000);
